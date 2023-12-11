@@ -9,15 +9,10 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '<p>Weather Demo</p>'
 }).addTo(map);
 
-function lookupLocation() {
+function lookupLocation(location = $('#inputLocation').val()) {
 
     try {
-       // debugger
-
-       console.log(outputType)
-
-        let location = $('#inputLocation').val();
-
+       
         if (location != "") {
          
             $.ajax({
@@ -118,3 +113,9 @@ function reloadData() {
         selectFareinheit();
     }
 }
+
+map.on('click', function (e) {
+    
+    lookupLocation(e.latlng.lat + ', ' + e.latlng.lng);
+    $('#inputLocation').val(e.latlng.lat + ', ' + e.latlng.lng)
+});
