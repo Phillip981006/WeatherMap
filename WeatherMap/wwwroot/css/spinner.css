@@ -1,0 +1,92 @@
+﻿
+@keyframes progresswave {
+    from {
+        border: 3px rgba(0, 0, 0, .5) solid;
+        width: 6px;
+        height: 6px;
+        border-radius: 6px;
+    }
+
+    to {
+        border: 3px rgba(0, 0, 0, 0) solid;
+        width: 48px;
+        height: 48px;
+        border-radius: 48px;
+    }
+}
+
+.in-progress::before, .in-progress::after {
+    content: "";
+    display: block;
+    position: absolute;
+    box-sizing: border-box;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    animation: 1.2s linear infinite progresswave;
+}
+
+.in-progress::after {
+    animation-delay: .6s;
+}
+
+
+.in-progress {
+    --pwd: var(--wave-diameter, 150px);
+    --pwb: var(--wave-thickness, 3px);
+    --pwt: var(--wave-duration, 1.2s);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes progresswave {
+    from {
+        border: var(--pwb) rgba(0, 0, 0, .5) solid;
+        width: calc(var(--pwb) * 2);
+        height: calc(var(--pwb) * 2);
+        border-radius: calc(var(--pwb) * 2);
+    }
+
+    to {
+        border: var(--pwb) rgba(0, 0, 0, 0) solid;
+        width: var(--pwd);
+        height: var(--pwd);
+        border-radius: var(--pwd);
+    }
+}
+
+.in-progress::before, .in-progress::after {
+    content: "";
+    display: block;
+    position: absolute;
+    box-sizing: border-box;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    animation: var(--pwt) linear infinite progresswave;
+}
+
+.in-progress::after {
+    animation-delay: calc(var(--pwt) / 2);
+}
+
+.spinner-container {
+    
+    z-index: 1000;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(128, 128, 128, 0.5);
+    width: 100%;
+    height: 100%;
+}

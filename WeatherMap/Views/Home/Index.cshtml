@@ -1,0 +1,38 @@
+﻿
+
+<h1 id="spinner" class="spinner-container hide">
+    <span class="in-progress">
+    </span>
+</h1>
+
+
+<div  id="map"></div>
+
+<div class="map-controls" >
+	<div class="container">
+		<div class="row">
+			<div class="col-md-2 col-sm-12">
+				<div class="row ">
+					<div class="col-1"></div>
+					<button onclick="reloadData()" class="rotate-icon-button col my-2">
+						<i class="fa-solid fa-arrows-rotate rotate-icon"></i>
+					</button>
+					<div class="metric-setting col ">
+						<p onclick="selectCelsius()" id="Celsius" class="metric-value metric-selected"> °C </p>
+						<p onclick="selectFareinheit()" id="Farenheit" class="metric-value">°F</p>
+					</div>
+					
+				</div>
+			</div>
+			<div class="col-md-10">
+				<form onsubmit="event.preventDefault()" class="find-location">
+					<input id="inputLocation" type="text" placeholder="Find your location..." required autocomplete="off">
+					<input type="submit" onclick="lookupLocation()" value="Find">
+				</form>
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+
